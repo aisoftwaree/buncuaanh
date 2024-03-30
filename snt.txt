@@ -1,0 +1,21 @@
+from math import isqrt
+
+def is_prime_range(L, R):
+    is_prime = [True] * (R - L + 1)
+
+    for i in range(2, isqrt(R) + 1):
+        for j in range(max(i * i, (L + i - 1) // i * i), R + 1, i):
+            is_prime[j - L] = False
+
+    if 1 >= L:
+        is_prime[1 - L] = False
+
+    for x in range(L, R + 1):
+        if is_prime[x - L]:
+            # x is a prime number
+            pass  # do something with x if needed
+
+# Example usage:
+L = 10
+R = 20
+is_prime_range(L, R)
